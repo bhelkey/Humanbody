@@ -3,6 +3,7 @@ package interactive_module.humanbody;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +12,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class HumanBody extends Screen implements View.OnTouchListener {
+
+    private ImageButton brain;
+    private ImageButton heart;
+    private ImageButton pancreas;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,10 +28,42 @@ public class HumanBody extends Screen implements View.OnTouchListener {
 
         ImageView iv = (ImageView) findViewById (R.id.image);
         if (iv != null) {
-            iv.setOnTouchListener (this);
+            //iv.setOnTouchListener (this);
         }
 
+        addButtonListeners();
+
         toast ("Touch the screen to discover where the regions are.");
+    }
+
+    public void addButtonListeners() {
+        brain = (ImageButton) findViewById(R.id.brain);
+        heart = (ImageButton) findViewById(R.id.heart);
+        pancreas = (ImageButton) findViewById(R.id.pancreas);
+
+        brain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent brainActivity = new Intent(HumanBody.this, Brain.class);
+                startActivity(brainActivity);
+            }
+        });
+        heart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent heartActivity = new Intent(HumanBody.this, Heart.class);
+                startActivity(heartActivity);
+            }
+        });
+        pancreas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*
+                Intent pancreasActivity = new Intent();
+                startActivity(brainActivity);
+                */
+            }
+        });
     }
 
     /**

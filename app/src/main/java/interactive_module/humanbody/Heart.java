@@ -10,13 +10,13 @@ import android.widget.ImageView;
 /**
  * Created by alvinheng on 11/15/15.
  */
-public class Brain extends Screen implements View.OnTouchListener {
+public class Heart extends Screen implements View.OnTouchListener {
 
     ImageButton back;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.brain);
+        setContentView(R.layout.heart);
 
         ImageView iv = (ImageView) findViewById (R.id.image);
         if (iv != null) {

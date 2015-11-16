@@ -6,7 +6,7 @@ import android.widget.Toast;
 /**
  * Created by alvinheng on 11/15/15.
  */
-public class Screen extends AppCompatActivity {
+public abstract class Screen extends AppCompatActivity {
 
     /**
      * Show a string on the screen via Toast.
