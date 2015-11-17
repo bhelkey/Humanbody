@@ -16,7 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class HumanBody extends Screen implements View.OnTouchListener {
+public class HumanBody extends Screen {
 
     private ImageButton brain;
     private ImageButton heart;
@@ -26,28 +26,14 @@ public class HumanBody extends Screen implements View.OnTouchListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_human_body);
 
-        ImageView iv = (ImageView) findViewById (R.id.image);
-        if (iv != null) {
-            //iv.setOnTouchListener (this);
-        }
-
         addButtonListeners();
 
         toast ("Touch the screen to discover where the regions are.");
     }
 
     public void addButtonListeners() {
-        brain = (ImageButton) findViewById(R.id.brain);
         heart = (ImageButton) findViewById(R.id.heart);
-        pancreas = (ImageButton) findViewById(R.id.pancreas);
 
-        brain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent brainActivity = new Intent(HumanBody.this, Brain.class);
-                startActivity(brainActivity);
-            }
-        });
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,91 +41,6 @@ public class HumanBody extends Screen implements View.OnTouchListener {
                 startActivity(heartActivity);
             }
         });
-        pancreas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                Intent pancreasActivity = new Intent();
-                startActivity(brainActivity);
-                */
-            }
-        });
-    }
-
-    /**
-     * Respond to the user touching the screen.
-     * Change images to make things appear and disappear from the screen.
-     *
-     */
-
-    public boolean onTouch (View v, MotionEvent ev)
-    {
-        boolean handledHere = false;
-
-        final int action = ev.getAction();
-
-        final int evX = (int) ev.getX();
-        final int evY = (int) ev.getY();
-        int nextImage = -1;			// resource id of the next image to display
-
-        // If we cannot find the imageView, return.
-        ImageView imageView = (ImageView) v.findViewById (R.id.image);
-        if (imageView == null) return false;
-
-        // When the action is Down, see if we should show the "pressed" image for the default image.
-        // We do this when the default image is showing. That condition is detectable by looking at the
-        // tag of the view. If it is null or contains the resource number of the default image, display the pressed image.
-        Integer tagNum = (Integer) imageView.getTag ();
-        int currentResource = (tagNum == null) ? R.drawable.anatomy: tagNum.intValue ();
-
-        // Now that we know the current resource being displayed we can handle the DOWN and UP events.
-
-        switch (action) {
-            case MotionEvent.ACTION_DOWN :
-                if (currentResource == R.drawable.anatomy) {
-                    nextImage = R.drawable.anatomy;
-                    handledHere = true;
-                } else handledHere = true;
-                break;
-
-            case MotionEvent.ACTION_UP :
-                // On the UP, we do the click action.
-                // The hidden image (image_areas) has three different hotspots on it.
-                // The colors are red, blue, and yellow.
-                // Use image_areas to determine which region the user touched.
-                int touchColor = getHotspotColor (R.id.image_areas, evX, evY);
-
-                // Compare the touchColor to the expected values. Switch to a different image, depending on what color was touched.
-                // Note that we use a Color Tool object to test whether the observed color is close enough to the real color to
-                // count as a match. We do this because colors on the screen do not match the map exactly because of scaling and
-                // varying pixel density.
-                ColorTool ct = new ColorTool ();
-                int tolerance = 50;
-                nextImage = R.drawable.anatomy;
-                if (ct.closeMatch (Color.RED, touchColor, tolerance)) nextImage = R.drawable.heart;
-                else if (ct.closeMatch (Color.BLUE, touchColor, tolerance)) nextImage = R.drawable.brain;
-                else if (ct.closeMatch (Color.YELLOW, touchColor, tolerance)) nextImage = R.drawable.anatomy;
-
-                // If the next image is the same as the last image, go back to the default.
-                // toast ("Current image: " + currentResource + " next: " + nextImage);
-                if (currentResource == nextImage) {
-                    nextImage = R.drawable.anatomy;
-                }
-                handledHere = true;
-                break;
-
-            default:
-                handledHere = false;
-        } // end switch
-
-        if (handledHere) {
-
-            if (nextImage > 0) {
-                imageView.setImageResource (nextImage);
-                imageView.setTag (nextImage);
-            }
-        }
-        return handledHere;
     }
 
     /**

@@ -12,8 +12,6 @@ import android.widget.ImageView;
  */
 public class Brain extends Screen implements View.OnTouchListener {
 
-    ImageButton back;
-
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.brain);
@@ -22,15 +20,6 @@ public class Brain extends Screen implements View.OnTouchListener {
         if (iv != null) {
             iv.setOnTouchListener (this);
         }
-
-        back = (ImageButton) findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                finish();
-            }
-        });
     }
 
     @Override

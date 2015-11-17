@@ -2,10 +2,40 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <Button
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/heart"
+        android:layout_gravity="center"
+        android:src="@drawable/heart"/>
+
+    <ImageButton
+        android:src="@drawable/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back to main"
         android:id="@+id/back"
         android:layout_gravity="left|top" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right|top">
+
+        <ImageButton
+            android:layout_width="123dp"
+            android:layout_height="102dp"
+            android:id="@+id/vessel"
+            android:layout_gravity="right|top"
+            android:src="@drawable/vessel"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="27dp"
+            android:text="Watch a Video"
+            android:id="@+id/textView"
+            android:layout_gravity="right|top" />
+
+    </LinearLayout>
+
 </FrameLayout>

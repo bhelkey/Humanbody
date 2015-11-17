@@ -1,5 +1,7 @@
 package interactive_module.humanbody;
 
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -10,18 +12,14 @@ import android.widget.ImageView;
 /**
  * Created by alvinheng on 11/15/15.
  */
-public class Heart extends Screen implements View.OnTouchListener {
+public class Heart extends Screen {
 
-    ImageButton back;
+    private ImageButton back;
+    private ImageButton vessel;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.heart);
-
-        ImageView iv = (ImageView) findViewById (R.id.image);
-        if (iv != null) {
-            iv.setOnTouchListener (this);
-        }
 
         back = (ImageButton) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -31,10 +29,14 @@ public class Heart extends Screen implements View.OnTouchListener {
                 finish();
             }
         });
-    }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
+        vessel = (ImageButton) findViewById(R.id.vessel);
+        vessel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vesselActivity = new Intent(Heart.this, Vessel.class);
+                startActivity(vesselActivity);
+            }
+        });
     }
 }

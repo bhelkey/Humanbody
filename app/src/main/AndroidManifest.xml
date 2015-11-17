@@ -18,6 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Brain"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Heart"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Vessel"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
