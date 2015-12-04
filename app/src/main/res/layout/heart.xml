@@ -10,6 +10,13 @@
         android:src="@drawable/heart"/>
 
     <ImageButton
+        android:src="@drawable/basic_animation0002"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/slider_button"
+        android:layout_gravity="center|top" />
+
+    <ImageButton
         android:src="@drawable/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
