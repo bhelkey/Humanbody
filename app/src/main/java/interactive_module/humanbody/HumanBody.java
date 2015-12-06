@@ -3,6 +3,7 @@ package interactive_module.humanbody;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,8 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -28,7 +30,15 @@ public class HumanBody extends Screen {
 
         addButtonListeners();
 
-        toast ("Touch the screen to discover where the regions are.");
+        toast("Touch the screen to discover where the regions are.");
+
+        ImageView imageview = (ImageView)findViewById(R.id.highlighed);
+        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+        animation.setDuration(500); // duration - half a second
+        animation.setInterpolator(new LinearInterpolator()); // do not alter animation rate
+        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+        imageview.startAnimation(animation);
     }
 
     public void addButtonListeners() {
