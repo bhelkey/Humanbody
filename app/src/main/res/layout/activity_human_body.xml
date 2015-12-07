@@ -27,10 +27,11 @@
         android:weightSum="1">
 
         <ImageButton
-            android:layout_width="match_parent"
+            android:layout_width="50dp"
             android:layout_height="110dp"
+            android:layout_gravity="center"
             android:id="@+id/brain"
-            android:visibility="invisible" />
+            android:background="@android:color/transparent" />
 
         <ImageButton
             android:layout_width="50dp"

@@ -16,21 +16,10 @@ public class Heart extends Screen {
 
     private ImageButton back;
     private ImageButton vessel;
-    private ImageButton slider;
 
     @Override public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.heart);
-
-        slider = (ImageButton) findViewById(R.id.slider_button);
-        slider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent sliderActivity = new Intent(Heart.this, Slider.class);
-                startActivity(sliderActivity);
-            }
-        });
 
         back = (ImageButton) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {

@@ -51,6 +51,16 @@ public class HumanBody extends Screen {
                 startActivity(heartActivity);
             }
         });
+
+        brain = (ImageButton) findViewById(R.id.brain);
+
+        brain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent brainActivity = new Intent(HumanBody.this, Brain.class);
+                startActivity(brainActivity);
+            }
+        });
     }
 
     /**
